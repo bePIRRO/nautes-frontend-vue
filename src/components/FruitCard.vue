@@ -11,11 +11,17 @@
     <div class="col-1 fruit-qty">{{ fruit.qty }} pz</div>
     <div class="col-1 fruit-frice ps-3">{{ fruit.price.toFixed(2) }} €</div>
     <div class="col-2 fruit-avaibility d-flex justify-content-center">
-      <div class="tag">{{ fruit.status }}</div>
+      <div class="tag" :class="fruit.qty > 0 ? 'true' : 'false'">
+        {{ fruit.qty > 0 ? "Disponibile" : "Esaurito" }}
+      </div>
     </div>
     <div class="col-1 fruit-delete text-center">
       <figure>
-        <img src="" alt="delete" onClick="" />
+        <img
+          src="../assets/images/icons/cross.png"
+          alt="delete"
+          @click="deleteFruit(fruit)"
+        />
       </figure>
     </div>
   </div>
@@ -27,23 +33,16 @@ export default {
   components: {},
   props: ["fruit"],
   methods: {
-    // isAvaible: "true",
-    // status: "Disponibile",
-    // if (${this.fruit.qty} === 0) {
-    //   isAvaible = "false";
-    //   status = "Esaurito";
-    // }
-
     // get img url
     getImg() {
       return require(`@/assets/images/${this.fruit.thumb}`);
     },
 
-    // fruit
-    /*function removeFruit() {
-      console.log("eliminato " + name);
-      return fruits.splice(fruit, 1);
-    }*/
+    // remove fruit
+    deleteFruit(fruit) {
+      console.log("eliminato " + this.fruit.name);
+      return $emit(this.fruits.splice(fruit, 1));
+    },
   },
 };
 </script>

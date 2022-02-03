@@ -8,6 +8,7 @@
       <main>
         <div v-for="fruit in fruits" :key="fruit">
           <FruitCard :fruit="fruit" />
+          <button @click="deleteFruit(fruit)">sium</button>
         </div>
       </main>
     </section>
@@ -26,6 +27,7 @@ export default {
     AddForm,
     FruitCard,
   },
+  props: ["newName", "newQty", "newPrice"],
   data() {
     return {
       fruits: [
@@ -62,7 +64,11 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    deleteFruit(fruit) {
+      this.fruits.splice(fruit, 1);
+    },
+  },
 };
 </script>
 

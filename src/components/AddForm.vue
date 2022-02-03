@@ -6,13 +6,14 @@
       </div>
       <div class="col-6 d-flex justify-content-end align-items-center pointer">
         <div
-          onClick=""
+          @click="formVisible()"
           class="tag
           d-inline-block
           custom-btn
           btnToggle"
+          :class="isVisible === false ? 'add' : 'close-btn'"
         >
-          btntext
+          {{ isVisible === false ? "Aggiungi +" : "Chiudi X" }}
         </div>
       </div>
     </div>
@@ -23,44 +24,42 @@
       justify-content-center
       m-0
       mb-3"
+      :class="isVisible === false ? 'd-none' : ''"
     >
       <div class="col-1"></div>
       <div class="col-4">
         <input
           type="text"
-          name="name"
-          id="name"
           class="input"
-          onChange=""
-          value=""
           placeholder="Descrizione prodotto"
+          v-model.trim="newName"
         />
       </div>
       <div class="col-2">
         <input
           type="text"
-          name="qty"
           id="qty"
           class="input"
-          onChange=""
-          value=""
           placeholder="Qta"
+          v-model.trim="newQty"
         />
       </div>
       <div class="col-2">
         <input
           type="text"
           name="price"
-          id="price"
           class="input"
-          onChange=""
-          value=""
           placeholder="Prezzo"
+          v-model.trim="newPrice"
         />
       </div>
       <div class="col-1"></div>
       <div class="col-1">
-        <button type="submit" class="tag true pointer custom-btn" onClick="">
+        <button
+          type="submit"
+          class="tag true pointer custom-btn"
+          @click="$emit(addNewFruit())"
+        >
           Conferma
         </button>
       </div>
@@ -72,6 +71,36 @@
 export default {
   name: "AddForm",
   components: {},
-  props: {},
+  props: ["newName", "newQty", "newPrice"],
+  data() {
+    return {
+      isVisible: false,
+    };
+  },
+  methods: {
+    // form visibility
+    formVisible() {
+      return (this.isVisible = !this.isVisible);
+    },
+
+    // add new fruit
+    addNewFruit() {
+      const newFruit = {
+        thumb: "",
+        name: this.newName,
+        qty: this.newQty,
+        price: this.newPrice,
+      };
+      this.fruits.push(newFruit);
+      console.log("aggiunto frutto" + newFruit);
+
+      this.newFruit = {
+        thumb: "",
+        name: "",
+        qty: "",
+        price: "",
+      };
+    },
+  },
 };
 </script>
