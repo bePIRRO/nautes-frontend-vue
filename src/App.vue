@@ -7,8 +7,7 @@
       </header>
       <main>
         <div v-for="fruit in fruits" :key="fruit">
-          <FruitCard :fruit="fruit" />
-          <button @click="deleteFruit(fruit)">sium</button>
+          <FruitCard :fruit="fruit" @deleteFruit="deleteFruit(fruit)" />
         </div>
       </main>
     </section>
@@ -65,6 +64,7 @@ export default {
     };
   },
   methods: {
+    // remove fruit
     deleteFruit(fruit) {
       this.fruits.splice(fruit, 1);
     },

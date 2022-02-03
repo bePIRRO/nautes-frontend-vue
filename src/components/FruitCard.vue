@@ -20,7 +20,7 @@
         <img
           src="../assets/images/icons/cross.png"
           alt="delete"
-          @click="deleteFruit(fruit)"
+          @click="$emit('deleteFruit')"
         />
       </figure>
     </div>
@@ -36,12 +36,6 @@ export default {
     // get img url
     getImg() {
       return require(`@/assets/images/${this.fruit.thumb}`);
-    },
-
-    // remove fruit
-    deleteFruit(fruit) {
-      console.log("eliminato " + this.fruit.name);
-      return $emit(this.fruits.splice(fruit, 1));
     },
   },
 };
