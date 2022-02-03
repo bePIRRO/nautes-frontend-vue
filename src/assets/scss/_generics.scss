@@ -1,0 +1,32 @@
+@import "./src/assets/scss/_colors.scss";
+
+#app {
+  background-image: url("./assets/images/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+// buttons/tags - status: background
+.tag {
+  padding: 0.3rem 1.2rem;
+  border-radius: 40px;
+  width: 130px;
+  text-align: center;
+  color: $white;
+}
+.true {
+  background-image: $true;
+}
+
+.false {
+  background-image: $false;
+}
+
+.add {
+  background-image: $add;
+}

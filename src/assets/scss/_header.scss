@@ -1,0 +1,44 @@
+h1 {
+  color: $grey;
+}
+
+.menu {
+  border-radius: 10px;
+  background-color: $light_grey;
+  color: $main_text;
+  height: 70px;
+  //   max-width: 100%;
+}
+
+.head-title,
+.form {
+  padding: 3rem 0;
+}
+
+.custom-btn:hover {
+  box-shadow: 0 0 5px $t_grey;
+  transform: scale(1.1);
+}
+
+.close-btn {
+  color: $yellow;
+  border: 2px solid $yellow;
+}
+
+// add form-section
+
+.input {
+  color: $grey;
+  background-color: $light_grey;
+  border: 0;
+  padding: 1rem 1.2rem;
+  border-radius: 40px;
+  width: 100%;
+}
+::placeholder {
+  color: $t_grey;
+}
+
+button {
+  border: 0;
+}

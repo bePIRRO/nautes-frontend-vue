@@ -1,0 +1,18 @@
+$light_grey: #ced9de;
+$grey: #8a9da6;
+$main_text: #6a8592;
+$light_green: #7af7a8;
+$green: #36d46f;
+$rose: #f77a7a;
+$red: #d43636;
+$light_yellow: #f7eb7a;
+$yellow: #f3ca1c;
+$dark_yellow: #e9aa00;
+$t_light_grey: RGBA(0, 0, 0, 0.1);
+$t_grey: RGBA(137, 156, 136, 0.5);
+$white: #fff;
+
+// use this colors as background images to buttons/tags/status background
+$true: linear-gradient(to bottom right, $light_green, $green);
+$false: linear-gradient(to bottom right, $rose, $red);
+$add: linear-gradient(to bottom right, $light_yellow, $yellow, $dark_yellow);
