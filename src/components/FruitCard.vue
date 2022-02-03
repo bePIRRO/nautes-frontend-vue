@@ -2,7 +2,7 @@
   <div class="d-flex fruit align-items-center justify-content-center mb-3">
     <div class="col-1">
       <figure class="fruit-img d-flex justify-content-center">
-        <img class="img-fluid" src="" alt="" />
+        <img class="img-fluid" :src="getImg(fruit.thumb)" :alt="fruit.name" />
       </figure>
     </div>
     <div class="col-5 fruit-name">
@@ -27,21 +27,23 @@ export default {
   components: {},
   props: ["fruit"],
   methods: {
-    isAvaible: "true",
-    status: "Disponibile",
-    // if (qty === 0) {
+    // isAvaible: "true",
+    // status: "Disponibile",
+    // if (${this.fruit.qty} === 0) {
     //   isAvaible = "false";
     //   status = "Esaurito";
     // }
-    // // get img url
-    // function getImg() {
-    //   return require(`../images/${thumb}`);
-    // }
-    // // remove fruit
-    // function removeFruit() {
-    //   console.log("eliminato " + name);
-    //   return fruits.splice(fruit, 1);
-    // }
+
+    // get img url
+    getImg() {
+      return require(`@/assets/images/${this.fruit.thumb}`);
+    },
+
+    // fruit
+    /*function removeFruit() {
+      console.log("eliminato " + name);
+      return fruits.splice(fruit, 1);
+    }*/
   },
 };
 </script>
