@@ -2,12 +2,12 @@
   <div id="app">
     <section class="container">
       <header>
-        <AddForm />
+        <AddForm @addNewFruit="addNewFruit()" />
         <Nav />
       </header>
       <main>
-        <div v-for="fruit in fruits" :key="fruit">
-          <FruitCard :fruit="fruit" @deleteFruit="deleteFruit(fruit)" />
+        <div v-for="(fruit, index) in fruits" :key="index">
+          <FruitCard :fruit="fruit" @deleteFruit="deleteFruit(index)" />
         </div>
       </main>
     </section>
@@ -26,7 +26,7 @@ export default {
     AddForm,
     FruitCard,
   },
-  props: ["newName", "newQty", "newPrice"],
+  // props: ["newName", "newQty", "newPrice"],
   data() {
     return {
       fruits: [
@@ -64,9 +64,8 @@ export default {
     };
   },
   methods: {
-    // remove fruit
-    deleteFruit(fruit) {
-      this.fruits.splice(fruit, 1);
+    deleteFruit: function(index) {
+      this.fruits.splice(index, 1);
     },
   },
 };

@@ -58,7 +58,7 @@
         <button
           type="submit"
           class="tag true pointer custom-btn"
-          @click="$emit(addNewFruit())"
+          @click="$emit('addNewFruit')"
         >
           Conferma
         </button>
