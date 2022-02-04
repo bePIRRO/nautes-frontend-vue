@@ -30,6 +30,7 @@
       m-0
       mb-3"
             :class="isVisible === false ? 'd-none' : ''"
+            @keyup.enter="addNewFruit()"
           >
             <!-- name -->
             <div class="col-1"></div>
