@@ -20,6 +20,7 @@
         <img
           src="../assets/images/icons/cross.png"
           alt="delete"
+          class="pointer"
           @click="$emit('deleteFruit')"
         />
       </figure>

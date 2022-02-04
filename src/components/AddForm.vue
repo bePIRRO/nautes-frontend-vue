@@ -4,13 +4,13 @@
       <div class="col-6">
         <h1>My Fruit Shop</h1>
       </div>
-      <div class="col-6 d-flex justify-content-end align-items-center pointer">
+      <div class="col-6 d-flex justify-content-end align-items-center">
         <div
           @click="formVisible()"
           class="tag
           d-inline-block
           custom-btn
-          btnToggle"
+          btnToggle pointer"
           :class="isVisible === false ? 'add' : 'close-btn'"
         >
           {{ isVisible === false ? "Aggiungi +" : "Chiudi X" }}
@@ -57,12 +57,13 @@
       <div class="col-1">
         <button
           type="submit"
-          class="tag true pointer custom-btn"
+          class="tag true custom-btn "
           @click="$emit('addNewFruit')"
         >
           Conferma
         </button>
       </div>
+      <div class="mb-3 mt-4 line"></div>
     </div>
   </div>
 </template>

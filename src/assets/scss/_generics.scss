@@ -11,22 +11,6 @@
   cursor: pointer;
 }
 
-// buttons/tags - status: background
-.tag {
-  padding: 0.3rem 1.2rem;
-  border-radius: 40px;
-  width: 130px;
-  text-align: center;
-  color: $white;
-}
-.true {
-  background-image: $true;
-}
-
-.false {
-  background-image: $false;
-}
-
-.add {
-  background-image: $add;
+* {
+  transition: 0.2s;
 }
