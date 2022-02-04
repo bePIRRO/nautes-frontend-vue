@@ -48,6 +48,7 @@
             <div class="col-2">
               <input
                 type="number"
+                min="0"
                 class="input"
                 id="input-qty"
                 placeholder="Qta"
@@ -60,6 +61,7 @@
               <input
                 type="number"
                 step=".01"
+                min="0.1"
                 name="price"
                 class="input"
                 id="input-price"
