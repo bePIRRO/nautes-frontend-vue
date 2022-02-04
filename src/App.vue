@@ -2,7 +2,84 @@
   <div id="app">
     <section class="container">
       <header>
-        <AddForm @addNewFruit="addNewFruit()" />
+        <!-- head-title + form button -->
+        <div>
+          <div class="row head-title">
+            <div class="col-6">
+              <h1><a href="#">My Fruit Shop</a></h1>
+            </div>
+            <div class="col-6 d-flex justify-content-end align-items-center">
+              <div
+                @click="formVisible()"
+                class="tag
+          d-inline-block
+          custom-btn
+          btnToggle pointer"
+                :class="isVisible === false ? 'add' : 'close-btn'"
+              >
+                {{ isVisible === false ? "Aggiungi +" : "Chiudi X" }}
+              </div>
+            </div>
+          </div>
+
+          <!-- form -->
+          <div
+            class="row
+      align-items-center
+      justify-content-center
+      m-0
+      mb-3"
+            :class="isVisible === false ? 'd-none' : ''"
+          >
+            <!-- name -->
+            <div class="col-1"></div>
+            <div class="col-4">
+              <input
+                type="text"
+                class="input"
+                placeholder="Descrizione prodotto"
+                v-model.trim="newName"
+              />
+            </div>
+
+            <!-- quantity -->
+            <div class="col-2">
+              <input
+                type="number"
+                id="qty"
+                class="input"
+                placeholder="Qta"
+                v-model.trim="newQty"
+              />
+            </div>
+
+            <!-- price -->
+            <div class="col-2">
+              <input
+                type="number"
+                step=".01"
+                name="price"
+                class="input"
+                placeholder="Prezzo"
+                v-model.trim="newPrice"
+              />
+            </div>
+            <div class="col-1"></div>
+
+            <!-- submit button -->
+            <div class="col-1">
+              <button
+                type="submit"
+                class="tag true custom-btn "
+                @click="addNewFruit()"
+              >
+                Conferma
+              </button>
+            </div>
+            <div class="mb-3 mt-4 line"></div>
+          </div>
+        </div>
+
         <Nav />
       </header>
       <main>
@@ -16,17 +93,15 @@
 
 <script>
 import Nav from "@/components/Nav.vue";
-import AddForm from "@/components/AddForm.vue";
 import FruitCard from "@/components/FruitCard.vue";
 
 export default {
   name: "App",
   components: {
     Nav,
-    AddForm,
     FruitCard,
   },
-  // props: ["newName", "newQty", "newPrice"],
+  props: ["newName", "newQty", "newPrice"],
   data() {
     return {
       fruits: [
@@ -61,11 +136,31 @@ export default {
           price: 1.23,
         },
       ],
+      isVisible: false,
     };
   },
   methods: {
-    deleteFruit: function(index) {
+    // delete fruit
+    deleteFruit(index) {
       this.fruits.splice(index, 1);
+    },
+
+    // add new fruit
+    addNewFruit() {
+      const newFruit = {
+        thumb: "fruits.png",
+        name: this.newName,
+        qty: ~~this.newQty,
+        price: +this.newPrice,
+      };
+      this.fruits.push(newFruit);
+
+      this.newFruit = "";
+    },
+
+    // form visibility
+    formVisible() {
+      return (this.isVisible = !this.isVisible);
     },
   },
 };
