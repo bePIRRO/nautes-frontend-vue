@@ -37,6 +37,7 @@
               <input
                 type="text"
                 class="input"
+                id="input-name"
                 placeholder="Descrizione prodotto"
                 v-model.trim="newName"
               />
@@ -46,8 +47,8 @@
             <div class="col-2">
               <input
                 type="number"
-                id="qty"
                 class="input"
+                id="input-qty"
                 placeholder="Qta"
                 v-model.trim="newQty"
               />
@@ -60,6 +61,7 @@
                 step=".01"
                 name="price"
                 class="input"
+                id="input-price"
                 placeholder="Prezzo"
                 v-model.trim="newPrice"
               />
@@ -153,9 +155,13 @@ export default {
         qty: ~~this.newQty,
         price: +this.newPrice,
       };
-      this.fruits.push(newFruit);
-
-      this.newFruit = "";
+      if (newFruit.name != "" && newFruit.qty > 0 && newFruit.price > 0) {
+        this.fruits.push(newFruit);
+      }
+      // this.newFruit = "";
+      this.newName = "";
+      this.newQty = NaN;
+      this.newPrice = NaN;
     },
 
     // form visibility
